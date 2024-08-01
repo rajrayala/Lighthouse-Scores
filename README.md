@@ -1,1 +1,1 @@
-# Lighthouse-Scores
+# Getting lighthouses score
