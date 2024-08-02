@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --loader ts-node/esm src/cli/index.ts",
-    "start:dm": "node --loader ts-node/esm src/cli/index.ts -d desktop,mobile -r 3",
-    "start:desktop": "node --loader ts-node/esm src/cli/index.ts -d desktop -r 3",
-    "start:mobile": "node --loader ts-node/esm src/cli/index.ts -d mobile -r 3",
-    "serve:bff": "node --loader ts-node/esm src/api/server.ts",
+    "start": "node -r ts-node/register src/cli/index.ts",
+    "start:dm": "node -r ts-node/register src/cli/index.ts -d desktop,mobile -r 3",
+    "start:desktop": "node -r ts-node/register src/cli/index.ts -d desktop -r 3",
+    "start:mobile": "node -r ts-node/register src/cli/index.ts -d mobile -r 3",
+    "serve:bff": "node -r ts-node/register src/api/server.ts",
     "serve:app": "cd ui && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,7 +24,6 @@
     "express": "^4.19.2",
     "fs-extra": "^11.2.0",
     "lighthouse": "^12.1.0",
-    "puppeteer": "^22.15.0",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
