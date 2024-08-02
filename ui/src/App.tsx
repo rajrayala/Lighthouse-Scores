@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <h1 style={{textAlign: 'center'}}>Lighthouse UI</h1>
+      <h1 style={{textAlign: 'center'}}>Lighthouse UI Dashboard</h1>
       <InputForm onRunTests={handleRunTests} />
       {loading ? <Loader /> : <LHResults results={results} />}
     </div>
