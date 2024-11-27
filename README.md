@@ -70,6 +70,9 @@ The server will start at `http://localhost:3000`.
                 "largest-contentful-paint": {
                     "score": "0 s"
                 },
+                "server-response-time": {
+                    "score": "0 ms"
+                },
                 "speed-index": {
                     "score": "0 s"
                 },

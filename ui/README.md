@@ -6,6 +6,7 @@ This is a React application that allows users to run Lighthouse and Axe performa
 
 - Input form to specify URLs, device type, and number of runs.
 - Displays Lighthouse results with categories and audits in a visually appealing format.
+- Displays Axe results with violations and passed ones.
 - Loading spinner while tests are running.
 
 ## Installation
@@ -37,8 +38,10 @@ This is a React application that allows users to run Lighthouse and Axe performa
 - `src/`
   - `components/`
     - `InputForm` - Form for user input.
+    - `AxeResults` - Component to display Axe results.
     - `LHResults` - Component to display Lighthouse results.
     - `Loader` - Loading spinner component.
+    - `ResultsCard` - Component to wrap results in a card.
   - `App.tsx` - Main application component.
   - `index.tsx` - Entry point of the application.
 

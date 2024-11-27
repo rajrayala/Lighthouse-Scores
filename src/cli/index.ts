@@ -32,7 +32,7 @@ const deviceTypeArray = device.split(',').map((d: string) => d.trim());
     const urls = url ? [ url ] : await readCsv(csvPath);
     console.log(`Found ${urls.length} URLs`);
 
-    const results = await runTests(urls, parseInt(runs), deviceTypeArray);
+    const results = await runTests(urls, parseInt(runs), deviceTypeArray, ['lighthouse']);
     saveResults(results, outputDir);
     console.log(`Results saved`);
   } catch (error) {
