@@ -11,11 +11,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post('/run-tests', async (req, res) => {
-  const { urls, runs, device } = req.body;
+  const { urls, runs, device, tests } = req.body;
   const deviceTypeArray = device.split(',');
 
   try {
-    const results = await runTests(urls, Number(runs), deviceTypeArray);
+    const results = await runTests(urls, Number(runs), deviceTypeArray, tests);
     res.json(results);
   } catch (error) {
     res.status(500).send({ error: error || 'Internal Server Error' });

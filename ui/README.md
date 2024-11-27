@@ -1,6 +1,6 @@
-# Lighthouse UI Dashboard
+# Performance UI Dashboard
 
-This is a React application that allows users to run Lighthouse performance tests and view the results in a user-friendly dashboard.
+This is a React application that allows users to run Lighthouse and Axe performance tests and view the results in a user-friendly dashboard.
 
 ## Features
 
@@ -12,7 +12,7 @@ This is a React application that allows users to run Lighthouse performance test
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/rajrayala/Lighthouse-Scores.git
+   git clone https://github.com/rajrayala/Performance-Testing-Scores.git
    cd ui
    ```
 

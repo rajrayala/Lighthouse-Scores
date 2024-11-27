@@ -25,6 +25,11 @@
     margin-bottom: 15px;
 }
 
+.checkbox-group {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
 .label {
     display: block;
     margin-bottom: 5px;

@@ -1,5 +1,5 @@
 import generateLHOptions from "../config/lighthouseConfig";
-import { DeviceType } from "../models/lighthouse.model";
+import { DeviceType } from "../models/device.model";
 
 export const runLighthouse = async (
   url: string,

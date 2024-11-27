@@ -1,4 +1,5 @@
-import { DeviceType, LighthouseOptions } from '../models/lighthouse.model';
+import { DeviceType } from "../models/device.model";
+import { LighthouseOptions } from '../models/lighthouse.model';
 
 const generateLHOptions = async (deviceType: DeviceType) => {
   const { screenEmulationMetrics, throttling, userAgents } = await import('lighthouse/core/config/constants.js');
@@ -29,6 +30,7 @@ const generateLHOptions = async (deviceType: DeviceType) => {
       "largest-contentful-paint",
       "total-blocking-time",
       "cumulative-layout-shift",
+      "server-response-time",
       "speed-index",
     ],
     output: "json",

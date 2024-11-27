@@ -1,3 +1,5 @@
+import { DeviceType } from "./device.model";
+
 export interface LighthouseOptions {
     onlyCategories: string[];
     onlyAudits?: string[],
@@ -15,5 +17,3 @@ export interface LighthouseOptions {
     throttlingMethod?: 'devtools' | "provided" | "devtools" | "simulate";
     throttling?: object;
 }
-
-export type DeviceType = 'desktop' | 'mobile';

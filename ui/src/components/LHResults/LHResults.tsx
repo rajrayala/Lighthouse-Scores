@@ -1,22 +1,23 @@
+import ResultsCard from '../ResultsCard/ResultsCard';
 import './LHResults.css';
 
 interface LHResultsProps {
-    results: any;
+  results: any;
 }
 
 const LHResults: React.FC<LHResultsProps> = ({ results }) => {
   return (
-    <div className="results-container">
+    <>
       {results?.map((result: any, index: number) => (
-        <div key={index} className="result-card">
+        <ResultsCard key={index}>
           <h3 className="url">{result.url}</h3>
           <p className="runs">Total Runs: <strong>{result.runs}</strong></p>
           <p className="device">Device Type: <strong>{result.deviceType.toUpperCase()}</strong></p>
           <div className="scores-container">
-            {Object.keys(result.averagedResult.categories).map((category) => (
+            {Object.keys(result.lhResults.categories).map((category) => (
               <div key={category} className="score">
-                <div className={`circle`} style={{ borderColor: getColor(result.averagedResult.categories[category].score) }}>
-                  {result.averagedResult.categories[category].score}
+                <div className={`circle`} style={{ borderColor: getColor(result.lhResults.categories[category].score) }}>
+                  {result.lhResults.categories[category].score}
                 </div>
                 <p className="category-text">{capitalize(category.replaceAll('-', ' '))}</p>
               </div>
@@ -25,17 +26,17 @@ const LHResults: React.FC<LHResultsProps> = ({ results }) => {
           <div className="metrics-container">
             <h3>Metrics</h3>
             <ul className="metrics-list">
-              {Object.keys(result.averagedResult.audits).map((audit) => (
+              {Object.keys(result.lhResults.audits).map((audit) => (
                 <li key={audit} className="metric">
                   <span>{capitalize(audit.replaceAll('-', ' '))}</span>
-                  <strong>{result.averagedResult.audits[audit].score}</strong>
+                  <strong>{result.lhResults.audits[audit].score}</strong>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
+        </ResultsCard>
       ))}
-    </div>
+    </>
   );
 };
 

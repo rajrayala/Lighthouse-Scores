@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import './InputForm.css'; // Import the CSS file
 
 interface InputFormProps {
-    onRunTests: (urls: string[], runs: number, device: string) => void;
+    onRunTests: (urls: string[], runs: number, device: string, tests: string[]) => void;
 }
 
 const InputForm: React.FC<InputFormProps> = ({ onRunTests }) => {
     const [urls, setUrls] = useState('');
     const [runs, setRuns] = useState(3);
     const [device, setDevice] = useState('desktop');
+    const [selectedTests, setSelectedTests] = useState<string[]>(['lighthouse']);
+
+    const handleCheckboxChange = (test: string) => {
+        setSelectedTests((prevTests) =>
+          prevTests.includes(test) ? prevTests.filter((t) => t !== test) : [...prevTests, test]
+        );
+    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        onRunTests([urls], runs, device);
+        const urlsArray = urls.split(',').map((url) => url.trim());
+        onRunTests(urlsArray, runs, device, selectedTests);
     };
 
     return (
@@ -20,27 +28,51 @@ const InputForm: React.FC<InputFormProps> = ({ onRunTests }) => {
             <h2 className="heading">Please Provide Inputs</h2>
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-group">
-                    <label className="label">URLs (comma separated):</label>
+                    <label className="label">Select Tests:</label>
+                    <div className="checkbox-group">
+                        <input
+                            type="checkbox"
+                            value="lighthouse"
+                            checked={selectedTests.includes('lighthouse')}
+                            onChange={() => handleCheckboxChange('lighthouse')}
+                        />
+                        <label>Lighthouse</label>
+                    </div>
+                    <div className="checkbox-group">
+                        <input
+                            type="checkbox"
+                            value="axe"
+                            checked={selectedTests.includes('axe')}
+                            onChange={() => handleCheckboxChange('axe')}
+                        />
+                        <label>Axe</label>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="label">URLs:</label>
                     <input
                         type="text"
                         value={urls}
                         onChange={(e) => setUrls(e.target.value)}
                         className="input"
-                        placeholder="http://example.com"
+                        placeholder="http://example.com, http://example2.com"
                         required
                     />
                 </div>
-                <div className="form-group">
-                    <label className="label">Number of Runs:</label>
-                    <input
-                        type="number"
-                        value={runs}
-                        onChange={(e) => setRuns(Number(e.target.value))}
-                        className="input"
-                        min="1"
-                        required
-                    />
-                </div>
+                {selectedTests.includes('lighthouse') && (
+                    <div className="form-group">
+                        <label className="label">Number of Runs:</label>
+                        <input
+                            type="number"
+                            value={runs}
+                            onChange={(e) => setRuns(Number(e.target.value))}
+                            className="input"
+                            min="1"
+                            required
+                        />
+                    </div>
+                )
+                }
                 <div className="form-group">
                     <label className="label">Device Type:</label>
                     <select value={device} onChange={(e) => setDevice(e.target.value)} className="input">

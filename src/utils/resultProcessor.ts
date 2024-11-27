@@ -8,6 +8,7 @@ type Results = {
 
 const auditNames = [
   'first-contentful-paint',
+  'server-response-time',
   'speed-index',
   'largest-contentful-paint',
   'total-blocking-time',
@@ -20,6 +21,7 @@ const formatValue = (key: string, value: number): string => {
     case 'largest-contentful-paint':
     case 'speed-index':
       return `${(value / 1000).toFixed(1)} s`;
+    case 'server-response-time':
     case 'total-blocking-time':
       return `${Math.round(value)} ms`;
     case 'cumulative-layout-shift':
@@ -35,7 +37,7 @@ export const saveResults = (results: Record<string, any>[], outputDir: string) =
   fs.writeFileSync(fileName, JSON.stringify(results, null, 2));
 };
 
-export const averageResults = (results: Record<string, any>[]) => {
+export const averageLHResults = (results: Record<string, any>[]) => {
   const summary = results.reduce((acc, result) => {
     Object.keys(result.audits).forEach((key) => {
       if (auditNames.includes(key)) {

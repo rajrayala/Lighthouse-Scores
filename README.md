@@ -1,10 +1,10 @@
-# Lighthouse Scores App
+# Performance Testing App
 
 This application runs performance tests on specified URLs using Lighthouse. It can be used both as a server, a CLI tool and as an [UI](ui/README.md) app.
 
 ## Features
 
-- Run Lighthouse tests on multiple URLs.
+- Run Lighthouse and/ or Axe tests on multiple URLs.
 - Supports both mobile and desktop devices.
 - Save results to JSON files.
 - Average results from multiple runs.
@@ -13,7 +13,7 @@ This application runs performance tests on specified URLs using Lighthouse. It c
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/rajrayala/Lighthouse-Scores.git
+   git clone https://github.com/rajrayala/Performance-Testing-Scores.git
    ```
 
 2. Install dependencies:
